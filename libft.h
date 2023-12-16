@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 19:01:13 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/13 19:42:36 by arekoune         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:19:34 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dsize);
 size_t	ft_strlcat(char *dest, const char *src, size_t dsize);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
