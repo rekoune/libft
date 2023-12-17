@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:24:40 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/12 17:12:49 by arekoune         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:38:32 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	d = dest;
 	s = src;
+	if (d == 0 && s == 0)
+		return (0);
 	while (i < n)
 	{
 		d[i] = s[i];
