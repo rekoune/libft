@@ -6,12 +6,13 @@
 /*   By: arekoune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 18:28:05 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/18 18:28:10 by arekoune         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:08:55 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// counting the number of the words
 static int	count(const char *str, char c)
 {
 	int	i;
@@ -35,6 +36,7 @@ static int	count(const char *str, char c)
 	return (counter);
 }
 
+// counting the lenght of the words
 static int	len(const char *str, char c)
 {
 	int	i;
@@ -45,6 +47,7 @@ static int	len(const char *str, char c)
 	return (i);
 }
 
+// free the memorie
 static void	fr(char **str, int j)
 {
 	while (j >= 0)
