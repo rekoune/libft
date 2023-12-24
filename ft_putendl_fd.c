@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 21:43:43 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/24 21:43:50 by arekoune         ###   ########.fr       */
+/*   Created: 2023/12/24 22:08:19 by arekoune          #+#    #+#             */
+/*   Updated: 2023/12/24 22:08:23 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
 
-int	main(void)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int		fd;
-	char	*s;
-
-	fd = open("test.c", O_WRONLY | O_TRUNC | O_CREAT);
-	printf("fd = %d\n", fd);
-	s = "abdellah rekoune";
-	ft_putendl_fd(s, fd);
-	close(fd);
-	return (0);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }

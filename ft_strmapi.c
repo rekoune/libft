@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 21:43:43 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/24 21:43:50 by arekoune         ###   ########.fr       */
+/*   Created: 2023/12/21 13:28:28 by arekoune          #+#    #+#             */
+/*   Updated: 2023/12/21 15:16:46 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
 
-int	main(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		fd;
-	char	*s;
+	char			*str;
+	unsigned int	len;
+	int				i;
 
-	fd = open("test.c", O_WRONLY | O_TRUNC | O_CREAT);
-	printf("fd = %d\n", fd);
-	s = "abdellah rekoune";
-	ft_putendl_fd(s, fd);
-	close(fd);
-	return (0);
+	len = ft_strlen(s);
+	i = 0;
+	str = malloc((len + 1) * sizeof(char));
+	if (str == 0)
+		return (NULL);
+	while (s[i] != 0)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
