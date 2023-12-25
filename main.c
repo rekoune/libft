@@ -17,13 +17,13 @@
 
 int	main(void)
 {
-	int		fd;
-	char	*s;
+	int	fd;
+	int	s;
 
 	fd = open("test.c", O_WRONLY | O_TRUNC | O_CREAT);
 	printf("fd = %d\n", fd);
-	s = "abdellah rekoune";
-	ft_putendl_fd(s, fd);
+	s = 0;
+	ft_putnbr_fd(s, fd);
 	close(fd);
 	return (0);
 }

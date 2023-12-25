@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 10:49:21 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/12 11:49:00 by arekoune         ###   ########.fr       */
+/*   Created: 2023/12/25 10:47:50 by arekoune          #+#    #+#             */
+/*   Updated: 2023/12/25 10:47:54 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	int		i;
+	char	c[12];
+	long	nb;
 
 	i = 0;
-	while (s[i] != '\0')
+	nb = n;
+	if (n == 0)
+		ft_putchar_fd('0', fd);
+	if (n < 0)
 	{
-		if ((char)c == s[i])
-			return ((char *)s + i);
+		nb = -nb;
+		ft_putchar_fd('-', fd);
+	}
+	while (nb > 0)
+	{
+		c[i] = (nb % 10) + 48;
+		nb = nb / 10;
 		i++;
 	}
-	if ((char)c == '\0')
-		return ((char *)s + i);
-	return (0);
+	i--;
+	while (i >= 0)
+	{
+		ft_putchar_fd(c[i], fd);
+		i--;
+	}
 }
