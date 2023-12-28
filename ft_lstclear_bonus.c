@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 21:37:48 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/24 21:38:00 by arekoune         ###   ########.fr       */
+/*   Created: 2023/12/28 10:17:15 by arekoune          #+#    #+#             */
+/*   Updated: 2023/12/28 10:17:17 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*node;
+	t_list	*next_node;
 
-	if (!s)
+	node = *lst;
+	if (node == NULL || lst == NULL)
 		return ;
-	i = 0;
-	while (s[i] != 0)
+	while (node)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		next_node = node->next;
+		del(node->content);
+		free(node);
+		node = next_node;
 	}
+	*lst = NULL;
 }

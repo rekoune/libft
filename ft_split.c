@@ -86,6 +86,8 @@ char	**ft_split(char const *str, char c)
 	int		n_word;
 	char	**a;
 
+	if (!str)
+		return (0);
 	n_word = count(str, c);
 	s = malloc((n_word + 1) * sizeof(char *));
 	if (s == 0)

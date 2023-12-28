@@ -33,6 +33,8 @@ char	*ft_strtrim(char const *s, char const *set)
 	int		lens;
 	char	*c;
 
+	if (!s)
+		return (0);
 	i = 0;
 	lens = ft_strlen(s);
 	if (lens > 0)

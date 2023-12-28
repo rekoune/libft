@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 21:37:48 by arekoune          #+#    #+#             */
-/*   Updated: 2023/12/24 21:38:00 by arekoune         ###   ########.fr       */
+/*   Created: 2023/12/28 16:28:15 by arekoune          #+#    #+#             */
+/*   Updated: 2023/12/28 16:28:25 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*head;
+	t_list	*node;
+	void	*content;
 
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != 0)
+	head = 0;
+	node = 0;
+	if ((!lst) || (!f) || (!del))
+		return (0);
+	while (lst)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		content = f(lst->content);
+		node = ft_lstnew(content);
+		if (!node)
+		{
+			del(content);
+			ft_lstclear(&head, del);
+			return (0);
+		}
+		ft_lstadd_back(&head, node);
+		lst = lst->next;
 	}
+	return (head);
 }
