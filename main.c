@@ -15,29 +15,28 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void delete (void *content)
+{
+	free(content);
+}
 int	main(void)
 {
-	t_list	*test;
-	t_list	*test1;
-	t_list	*test2;
-	t_list	*test3;
-	t_list	*test0;
-	t_list	*node;
+	t_list *node;
+	t_list *node1;
+	t_list *node2;
+	t_list *node3;
+	t_list *head;
 
-	test = ft_lstnew("0");
-	test1 = ft_lstnew("1");
-	test->next = test1;
-	test2 = ft_lstnew("2");
-	test1->next = test2;
-	test3 = ft_lstnew("3");
-	test2->next = test3;
-	test0 = ft_lstnew("5");
-	ft_lstadd_front(&test, test0);
-	node = test;
-	while (node)
-	{
-		printf("%s\n", node->content);
-		node = node->next;
-	}
-	return (0);
+	node = ft_lstnew(ft_strdup("abdellah"));
+	printf("%p\n", node);
+	head = node;
+	node1 = ft_lstnew(ft_strdup("abdellah"));
+	node->next = node1;
+	node2 = ft_lstnew(ft_strdup("abdellah"));
+	node1->next = node2;
+	node3 = ft_lstnew(ft_strdup("abdellah"));
+	node2->next = node3;
+	printf("the content befor del : %s\n", (*node).content);
+	ft_lstclear(&head, delete);
+	printf("the content after the del : %s\n", (*node).content);
 }
