@@ -33,12 +33,10 @@ char	*ft_strtrim(char const *s, char const *set)
 	int		lens;
 	char	*c;
 
-	if (!s)
+	if (!s || !set)
 		return (0);
 	i = 0;
-	lens = ft_strlen(s);
-	if (lens > 0)
-		lens--;
+	lens = ft_strlen(s) - 1;
 	start = 0;
 	while (s[i] != 0 && chek(s[i], (char *)set) == 1)
 		i++;

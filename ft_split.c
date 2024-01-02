@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-// counting the number of the words
 static int	count(const char *str, char c)
 {
 	int	i;
@@ -36,7 +35,6 @@ static int	count(const char *str, char c)
 	return (counter);
 }
 
-// counting the lenght of the words
 static int	len(const char *str, char c)
 {
 	int	i;
@@ -47,7 +45,6 @@ static int	len(const char *str, char c)
 	return (i);
 }
 
-// free the memorie
 static void	fr(char **str, int j)
 {
 	while (j >= 0)
@@ -58,25 +55,22 @@ static void	fr(char **str, int j)
 static char	**mini_split(char const *str, char c, char **s, int n_word)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i] != 0)
+	while (i < n_word)
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != 0 && j < n_word)
-			s[j++] = ft_substr(&str[i], 0, len(&str[i], c));
-		if (s[j - 1] == 0)
+		while (*str == c)
+			str++;
+		if (*str != c && *str != 0)
+			s[i++] = ft_substr(str, 0, len(str, c));
+		if (s[i - 1] == 0)
 		{
-			fr(s, j - 1);
-			return (NULL);
+			fr(s, i - 1);
+			return (0);
 		}
-		str = str + len(&str[i], c);
-		i++;
+		str = str + len(str, c);
 	}
-	s[j] = NULL;
+	s[i] = 0;
 	return (s);
 }
 
@@ -91,7 +85,7 @@ char	**ft_split(char const *str, char c)
 	n_word = count(str, c);
 	s = malloc((n_word + 1) * sizeof(char *));
 	if (s == 0)
-		return (NULL);
+		return (0);
 	a = mini_split(str, c, s, n_word);
 	return (a);
 }

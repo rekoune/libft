@@ -18,7 +18,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*next_node;
 
 	node = *lst;
-	if (node == NULL || lst == NULL)
+	if (node == 0 || lst == 0)
 		return ;
 	while (node)
 	{
@@ -27,5 +27,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		free(node);
 		node = next_node;
 	}
-	*lst = NULL;
+	*lst = 0;
 }

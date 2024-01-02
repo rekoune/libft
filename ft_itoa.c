@@ -22,7 +22,7 @@ static char	*reverse(char *str)
 	j = ft_strlen(str);
 	s = malloc((j + 1) * sizeof(char));
 	if (s == 0)
-		return (NULL);
+		return (0);
 	j--;
 	while (i < ft_strlen(str))
 	{

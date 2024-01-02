@@ -12,13 +12,10 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-// delete
-# include <ctype.h>
-# include <stdio.h>
+
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
-// delete
+
 typedef struct s_list
 {
 	void			*content;

@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	nb;
-	int	nm;
-	int	i;
+	unsigned long	nb;
+	int				nm;
+	int				i;
 
 	nb = 0;
 	nm = 1;
@@ -32,6 +32,10 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = (nb * 10) + (str[i] - 48);
+		if (nb > 9223372036854775807 && nm == 1)
+			return (-1);
+		if (nb > 9223372036854775807 && nm == -1)
+			return (0);
 		i++;
 	}
 	return (nb * nm);
