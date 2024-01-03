@@ -18,12 +18,12 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dsize)
 	size_t	lens;
 	int		i;
 
-	lend = ft_strlen(dest);
 	lens = ft_strlen(src);
-	i = 0;
-	if (dsize == 0)
+	if (!dsize && !dest)
 		return (lens);
-	else if (dsize >= lend)
+	lend = ft_strlen(dest);
+	i = 0;
+	if (dsize > lend)
 	{
 		while (i + lend < (dsize - 1) && src[i])
 		{
